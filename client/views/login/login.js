@@ -9,6 +9,7 @@ Template.login.events({
       if(err) {
         console.log("could not login");
       } else {
+        Router.go('stream');
         console.log("logged in");
       }
     });
