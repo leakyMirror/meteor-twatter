@@ -1,0 +1,1 @@
+# @Col = new Meteor.Collection null
