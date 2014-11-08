@@ -9,6 +9,10 @@ template(name="header")
       a.navbar-brand(href="{{pathFor 'stream'}}") Twatter
     .collapse.navbar-collapse#navigation
         ul.nav.navbar-nav
+          li
+            a(href="{{ pathFor 'stream' }}") Twatts stream
+          li
+            a(href="{{ pathFor 'userlist' }}") All Twatters
         ul.nav.navbar-nav.navbar-right
             li
               unless loggedIn
