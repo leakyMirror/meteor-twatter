@@ -1,5 +1,14 @@
 Template.header.helpers({
-  currentUser: function() {
-    return !Meteor.userId();
+  loggedIn: function() {
+    return !!Meteor.userId();
+  },
+  username: function() {
+    return Meteor.user().username;
+  }
+});
+
+Template.header.events({
+  'click #logout-btn': function(event, tpl) {
+    Meteor.logout();
   }
 });

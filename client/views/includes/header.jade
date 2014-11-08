@@ -10,7 +10,8 @@ template(name="header")
     .collapse.navbar-collapse#navigation
         ul.nav.navbar-nav
         ul.nav.navbar-nav.navbar-right
-          if currentUser
             li
-              a(href="{{ pathFor 'login' }}") Login
-
+              unless loggedIn
+                a(href="{{ pathFor 'login' }}") Login
+              else
+                a#logout-btn(href="#") Logout, {{ username }}

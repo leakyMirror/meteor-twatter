@@ -4,7 +4,7 @@ template(name="register")
       .col-xs-12
         h2 Register a new account
     .row
-      form.form-horizontal(action="" role="form")
+      form#register-form.form-horizontal(action="" role="form")
         .form-group
           label.col-xs-2.control-label(for="username")
             | Username:
@@ -29,5 +29,5 @@ template(name="register")
 
         .form-group
           .col-xs-12
-            input.btn.btn-success.btn-lg.pull-right(type="submit" value="Register")
+            input#register-submit.btn.btn-success.btn-lg.pull-right(type="submit" value="Register")
 

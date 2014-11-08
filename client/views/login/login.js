@@ -2,10 +2,10 @@ Template.login.events({
   'submit #login-form': function(event, tpl) {
     event.preventDefault();
 
-    var email = tpl.find('#login-email').value,
-        password = tpl.find('#login-password').value;
+    var username = tpl.find('#username').value,
+        password = tpl.find('#password').value;
 
-    Meteor.loginWithPassword(email, password, function(err) {
+    Meteor.loginWithPassword(username, password, function(err) {
       if(err) {
         console.log("could not login");
       } else {

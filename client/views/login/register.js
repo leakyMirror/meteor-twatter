@@ -2,13 +2,17 @@ Template.register.events({
   'submit #register-form': function(event, tpl) {
     event.preventDefault();
 
-    var email = trimString(tpl.find('#account-email').value),
-        password = tpl.find('#account-password').value;
+    var
+        username = trimString(tpl.find('#username').value),
+        email = trimString(tpl.find('#email').value),
+        password = tpl.find('#password').value,
+        passwordConfirmation = tpl.find('#password-confirmation').value;
 
-    if(isValidPassword(password)) {
-      Accounts.createUser({ email: email, password: password }, function(err) {
+    // TODO: add notifications for invalid form
+    if(isValidPassword(password) && password === passwordConfirmation) {
+      Accounts.createUser({ username: username, email: email, password: password }, function(err) {
         if(err) {
-          console.log("could not create user");
+          console.log("could not create user", err);
         } else {
           Router.go('stream');
           console.log("user created successfully");
