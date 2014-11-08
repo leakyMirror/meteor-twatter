@@ -1,8 +1,8 @@
 template(name='stream')
-  +write
+  +twattForm
   +twatts
 
-template(name='write')
+template(name='twattForm')
   .input-group.input-group-lg.twat-input-field
     input#twatt-input.form-control.message-field(type='text' placeholder="What yo wanna twatt 'bout?")
     span.input-group-btn
@@ -10,7 +10,7 @@ template(name='write')
 
 template(name='twatts')
   ul.list-group.container-fluid
-    each this
+    each twatts
       li.list-group-item.row
         .col-xs-11
           h5 #{ username }
