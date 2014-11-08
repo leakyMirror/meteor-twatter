@@ -1,33 +1,42 @@
 template(name="register")
   .container
     .row
-      .col-xs-12
-        h2 Register a new account
-    .row
-      form#register-form.form-horizontal(action="" role="form")
-        .form-group
-          label.col-xs-2.control-label(for="username")
-            | Username:
-          .col-xs-10
-            input#username.form-control(type="text")
-        .form-group
-          label.col-xs-2.control-label(for="email")
-            | Email:
-          .col-xs-10
-            input#email.form-control(type="email" placeholder="name@domain.com")
-        hr
-        .form-group
-          label.col-xs-2.control-label(for="password")
-            | Password:
-          .col-xs-10
-            input#password.form-control(type="password")
-        .form-group
-          label.col-xs-2.control-label(for="password-confirmation")
-            | Repeat password:
-          .col-xs-10
-            input#password-confirmation.form-control(type="password")
+      .panel.panel-default.register-panel.center-block
+        .panel-heading
+          h2.panel-title.text-center Register a new account
 
-        .form-group
-          .col-xs-12
-            input#register-submit.btn.btn-success.btn-lg.pull-right(type="submit" value="Register")
+        .panel-body
+          form#register-form.form-horizontal(action="" role="form")
+            .form-group
+              label.col-xs-2.control-label(for="username")
+                | Username:
+              .col-xs-10
+                input#username.form-control(type="text")
+            .form-group
+              label.col-xs-2.control-label(for="email")
+                | Email:
+              .col-xs-10
+                input#email.form-control(type="email" placeholder="name@domain.com")
+            hr
+            .form-group
+              label.col-xs-2.control-label(for="password")
+                | Password:
+              .col-xs-10
+                input#password.form-control(type="password")
+            .form-group
+              label.col-xs-2.control-label(for="password-confirmation")
+                | Again:
+              .col-xs-10
+                input#password-confirmation.form-control(type="password")
 
+            .form-group
+              .col-xs-10.text-right.do-nothing-container
+                label(for="nothing")
+                  small.text-muted By checking this checkbox you do absolutely nothing
+                input(id="nothing" type="checkbox")
+              .col-xs-2
+                input#register-submit.btn.btn-success.pull-right(type="submit" value="Register")
+
+        .panel-footer
+          | I have account, let me
+          a(href="{{ pathFor 'login' }}") login

@@ -9,7 +9,12 @@ Router.route('/login', {
 });
 
 Router.route('/register', {
-  name: 'register'
+  name: 'register',
+  data: function() { return Meteor.subscribe('allUsers'); }
+});
+
+Router.route('/recover-password', {
+  name: 'recoverPassword'
 });
 
 Router.route('/', {
@@ -31,13 +36,21 @@ Router.onBeforeAction(function () {
     if(Meteor.loggingIn()) {
       this.render(this.loadingTemplate);
     } else {
-      if(this.url !== '/register') {
-        this.render('login');
-      } else {
-        this.render('register');
+      // TODO: find better solution for this
+      switch (this.url) {
+        case '/register':
+          this.render('login');
+          break;
+        case '/recover-password':
+          this.render('recoverPassword');
+          break;
+        default:
+          this.render('login');
       }
     }
   } else {
     this.next();
   }
 });
+
+
