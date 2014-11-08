@@ -21,7 +21,6 @@ Router.route('/profile', {
 });
 
 Router.onBeforeAction(function () {
-  console.log(this);
   if(!Meteor.user()) {
     if(Meteor.loggingIn()) {
       this.render(this.loadingTemplate);
