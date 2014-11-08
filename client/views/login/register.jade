@@ -1,0 +1,12 @@
+template(name="register")
+  h2
+    Register
+  form#register-form(action="")
+    div
+      | Type your email:
+      input#account-email(type=email placeholder="email@domain.com")
+    div
+      | And password:
+      input#account-password(type="password")
+    div
+      input#create-account(type="submit" value="Create an Account")

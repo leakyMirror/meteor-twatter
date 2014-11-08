@@ -8,12 +8,21 @@ Router.route('/', function() {
   this.render('stream');
 });
 
+Router.route('/register', {
+  name: 'register'
+});
+
 Router.onBeforeAction(function () {
+  console.log(this);
   if(!Meteor.user()) {
     if(Meteor.loggingIn()) {
       this.render(this.loadingTemplate);
     } else {
-      this.render('login');
+      if(this.url !== '/register') {
+        this.render('login');
+      } else {
+        this.render('register');
+      }
     }
   } else {
     this.next();
