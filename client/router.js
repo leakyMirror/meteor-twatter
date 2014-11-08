@@ -4,8 +4,8 @@ Router.configure({
   loadingTemplate: 'loading'
 });
 
-Router.route('/', function() {
-  this.render('stream');
+Router.route('/', {
+  name: 'stream'
 });
 
 Router.route('/register', {
