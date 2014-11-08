@@ -9,8 +9,12 @@ template(name='write')
       button#save-twatt.btn.btn-success Twatt!
 
 template(name='twatts')
-  ul.list-group
+  ul.list-group.container-fluid
     each this
-      li.list-group-item
-        div #{ username }
-        div #{ text }
+      li.list-group-item.row
+        .col-xs-11
+          h5 #{ username }
+          p #{ text }
+        .col-xs-1
+          button#remove-twatt.btn.btn-xs.btn-danger.pull-right
+            span.glyphicon.glyphicon-trash

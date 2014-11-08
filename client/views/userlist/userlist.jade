@@ -1,0 +1,17 @@
+template(name='userlist')
+  .container
+    .row
+      .col-xs-12
+        h2
+          | Twatter
+          sup &trade;
+          | users
+    .row
+      ul.list-group.container-fluid.col-xs-12
+        each users
+          li.list-group-item.row
+            .col-xs-11
+              h4 {{username}}
+              p {{biography}}
+            .col-xs-1
+              button#follow-btn.btn.btn-sm.btn-default Follow
