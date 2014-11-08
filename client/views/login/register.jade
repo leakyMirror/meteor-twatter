@@ -1,12 +1,33 @@
 template(name="register")
-  h2
-    Register
-  form#register-form(action="")
-    div
-      | Type your email:
-      input#account-email(type=email placeholder="email@domain.com")
-    div
-      | And password:
-      input#account-password(type="password")
-    div
-      input#create-account(type="submit" value="Create an Account")
+  .container
+    .row
+      .col-xs-12
+        h2 Register a new account
+    .row
+      form.form-horizontal(action="" role="form")
+        .form-group
+          label.col-xs-2.control-label(for="username")
+            | Username:
+          .col-xs-10
+            input#username.form-control(type="text")
+        .form-group
+          label.col-xs-2.control-label(for="email")
+            | Email:
+          .col-xs-10
+            input#email.form-control(type="email" placeholder="name@domain.com")
+        hr
+        .form-group
+          label.col-xs-2.control-label(for="password")
+            | Password:
+          .col-xs-10
+            input#password.form-control(type="password")
+        .form-group
+          label.col-xs-2.control-label(for="password-confirmation")
+            | Repeat password:
+          .col-xs-10
+            input#password-confirmation.form-control(type="password")
+
+        .form-group
+          .col-xs-12
+            input.btn.btn-success.btn-lg.pull-right(type="submit" value="Register")
+
