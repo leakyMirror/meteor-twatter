@@ -1,0 +1,23 @@
+template(name="profile")
+  .container
+    .row
+      .col-xs-12
+        h2 Profile
+    .row
+      form(action="" role="form")
+        .form-group
+          img(src="http://beerhold.it/128/128", alt="")
+        .form-group
+          label(for="email")
+            | Email address
+          input.form-control#email(type="email" placeholder="#{ email }" disabled)
+        .form-group
+          label(for="username")
+            | Username
+          input.form-control#username(type="text" placeholder="#{ username }" disabled)
+        .form-group
+          label(for="realname")
+            | Real name
+          input.form-control#realname(type="text" placeholder="#{ realname }")
+        .form-group
+          input.btn.btn-success#save-profile(type="submit" value="Save")
