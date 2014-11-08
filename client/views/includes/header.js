@@ -3,7 +3,7 @@ Template.header.helpers({
     return !!Meteor.userId();
   },
   username: function() {
-    return Meteor.user().username;
+    return Meteor.user() && Meteor.user().username;
   }
 });
 
