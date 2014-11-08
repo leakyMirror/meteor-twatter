@@ -22,6 +22,10 @@ Router.route('/profile', {
   name: 'profile'
 });
 
+Router.route('/userlist', {
+  name: 'userlist'
+});
+
 Router.onBeforeAction(function () {
   if(!Meteor.user()) {
     if(Meteor.loggingIn()) {
