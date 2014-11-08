@@ -1,8 +1,14 @@
 Template.write.events({
-  'click .send': function() {
-    var text = $('.message-field').val();
-    $('.message-field').val('');
-    console.log('Message:' + text);
+  'click #save-twatt': function(event, tpl) {
+    var text = $('#twatt-input').val();
+    $('#twatt-input').val('');
     Twatts.insert({ authorId: Meteor.userId(), username: Meteor.user().username, text: text });
+  },
+  'keypress #twatt-input': function(event, tpl) {
+    if(event.keyCode === 13 || event.which === 13) {
+      var text = $('#twatt-input').val();
+      $('#twatt-input').val('');
+      Twatts.insert({ authorId: Meteor.userId(), username: Meteor.user().username, text: text });
+    }
   }
 });
