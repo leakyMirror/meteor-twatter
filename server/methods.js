@@ -1,10 +1,20 @@
 Meteor.methods({
   follow: function(params) {
-    // TODO: add check if user is the same. ownsdoc?
-    // if userToFollow does not exist in array, insert it
+    if(Meteor.userId() !== params.userId) return false
+    if(params.userId === params.userToFollow) return false
+
     Meteor.users.update(
-      { _id: params.user },
+      { _id: params.userId },
       { $addToSet: { usersToFollow: params.userToFollow }}
+    )
+  },
+
+  unfollow: function(params) {
+    if(Meteor.userId() !== params.userId) return false
+
+    Meteor.users.update(
+      { _id: params.userId },
+      { $pull: { usersToFollow: params.userToUnfollow }}
     )
   }
 })

@@ -12,6 +12,11 @@ template(name='userlist')
           li.list-group-item.row
             .col-xs-11
               h4 {{username}}
-              p {{biography}}
+              //- p {{biography}}
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, facere.
             .col-xs-1
-              button#follow-btn.btn.btn-sm.btn-default Follow
+              if isFollowed _id
+                button(id='#{_id}', data='followed').btn.btn-sm.btn-success.follow-btn Followed
+              else
+                button(id='#{_id}', data='follow').btn.btn-sm.btn-default.follow-btn Follow
