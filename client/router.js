@@ -4,4 +4,18 @@ Router.configure({
   loadingTemplate: 'loading'
 });
 
-Router.route('home');
+Router.route('/', function() {
+  this.render('stream');
+});
+
+Router.onBeforeAction(function () {
+  if(!Meteor.user()) {
+    if(Meteor.loggingIn()) {
+      this.render(this.loadingTemplate);
+    } else {
+      this.render('login');
+    }
+  } else {
+    this.next();
+  }
+});
