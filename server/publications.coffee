@@ -1,1 +1,0 @@
-# Meteor.publish 'name', -> Name.find()
