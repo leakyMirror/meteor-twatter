@@ -4,16 +4,18 @@ Router.configure({
   loadingTemplate: 'loading'
 });
 
-Router.route('/', {
-  name: 'stream'
-});
-
 Router.route('/login', {
   name: 'login'
 });
 
 Router.route('/register', {
   name: 'register'
+});
+
+Router.route('/', {
+  name: 'stream',
+  waitOn: function() { return Meteor.subscribe('twattsAuthored', Meteor.userId()); },
+  data: function() { return Twatts.find(); }
 });
 
 Router.route('/profile', {

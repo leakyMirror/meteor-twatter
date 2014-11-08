@@ -1,3 +1,3 @@
 Meteor.publish('twattsAuthored', function(userId) {
-  return Twats.find({ authorId: userId })
-})
+  return Twatts.find({ authorId: userId });
+});

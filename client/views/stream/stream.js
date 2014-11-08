@@ -8,10 +8,6 @@ Template.write.events({
     var text = $('.message-field').val();
     $('.message-field').val('');
     console.log('Message:' + text);
-    Twatts.insert({ authorId: Meteor.userId(), text: text })
+    Twatts.insert({ authorId: Meteor.userId(), text: text });
   }
 });
-
-Template.twatts.twatts_ = function() {
-  return Twatts.find();
-};
