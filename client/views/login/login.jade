@@ -1,2 +1,9 @@
-template(name='login')
-  {{> loginButtons}}
+template(name="login")
+  form#login-form(action="")
+    div
+      input#login-email(type="email")
+      input#login-password(type="password")
+      input#login-button(type="submit" value="Sign In")
+    div
+      | No account yet?
+      a(href="{{pathFor 'register'}}") Register
