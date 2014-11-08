@@ -8,5 +8,6 @@ iron:router
 mizzao:bootstrap-3
 mquandalle:jade
 fourseven:scss
-accounts-ui
 accounts-password
+accounts-base
+

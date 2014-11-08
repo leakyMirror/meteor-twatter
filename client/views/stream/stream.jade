@@ -1,9 +1,14 @@
 template(name='stream')
-  .button.btn foo
+  +write
+  +twatts
 
-  each message
-    div #{ author }
-    div #{ tweet }
+template(name='write')
+  input(type='' placeholder='Write message').form-control.message-field
+  button.btn.btn-primary.send Send
 
-template(name='foo')
-  div foo
+template(name='twatts')
+  ul.list-group
+    each twatts
+      li.list-group-item
+        div #{ author }
+        div #{ text }
