@@ -28,7 +28,7 @@ Router.route('/profile', {
 
 Router.route('/userlist', {
   name: 'userlist',
-  waitOn: function() { return Meteor.subscribe('users') },
+  waitOn: function() { return Meteor.subscribe('allUsers') },
 });
 
 Router.onBeforeAction(function () {
