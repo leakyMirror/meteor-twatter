@@ -3,8 +3,10 @@ template(name='stream')
   +twatts
 
 template(name='write')
-  input(type='' placeholder='Write message').form-control.message-field
-  button.btn.btn-primary.send Send
+  .input-group.input-group-lg.twat-input-field
+    input.form-control.message-field(type='text' placeholder="What yo wanna twatt 'bout?")
+    span.input-group-btn
+      button.btn.btn-success.send Send
 
 template(name='twatts')
   ul.list-group
