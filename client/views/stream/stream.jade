@@ -1,2 +1,9 @@
 template(name='stream')
-  div The stream
+  .button.btn foo
+
+  each message
+    div #{ author }
+    div #{ tweet }
+
+template(name='foo')
+  div foo
