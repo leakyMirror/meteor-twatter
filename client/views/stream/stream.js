@@ -21,5 +21,5 @@ Template.twattForm.events({
 });
 
 Template.profileSidebar.helpers({
-  username: Meteor.user().username
+  username: Meteor.user() && Meteor.user().username
 });

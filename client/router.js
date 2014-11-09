@@ -42,10 +42,22 @@ Router.route('/userlist', {
 
 Router.route('/profile/:username', {
   name: 'profile',
-  waitOn: function() { return Meteor.subscribe('allUsers') }, // TODO: subscribe only for particular user
-  data: function() {
-    return Meteor.users.findOne({ username: this.params.username })
+  waitOn: function() {
+    return [
+      Meteor.subscribe('ownTwatts', this.params.username),
+      Meteor.subscribe('allUsers')
+    ]
+  }, // TODO: subscribe only for particular user
+
+  data: function() { return {
+      user: Meteor.users.findOne({ username: this.params.username }),
+      twatts: Twatts.find({}, { sort: { date: -1 }})
+    }
   }
+});
+
+Router.route('/settings', {
+  name: 'settings'
 });
 
 Router.onBeforeAction(function () {
