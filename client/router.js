@@ -6,7 +6,11 @@ Router.configure({
 
 Router.route('/', {
   name: 'stream',
-  waitOn: function() { return Meteor.subscribe('streamForUser', Meteor.userId()); },
+  waitOn: function() {
+    if(Meteor.user()) {
+      return Meteor.subscribe('streamForUser', Meteor.user());
+    }
+  },
 });
 
 Router.route('/login', {
