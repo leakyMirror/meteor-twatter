@@ -18,7 +18,7 @@ Meteor.methods({
   },
 
   unfollow: function(params) {
-    if(Meteor.userId() !== params.userId) return false
+    if(Meteor.userId() !== params.userId) return false;
 
     Meteor.users.update(
       { _id: params.userId },
@@ -29,5 +29,9 @@ Meteor.methods({
       { _id: params.userToUnfollow },
       { $pull: { 'profile.followers': params.userId }}
     );
+  },
+
+  removeTwatt: function(params) {
+    Twatts.remove(params.id);
   }
-})
+});

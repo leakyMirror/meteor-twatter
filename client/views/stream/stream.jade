@@ -50,6 +50,6 @@ template(name='twattList')
           p #{ text }
           .twatt-options
             if ownTwatt this
-              small.text-danger#remove-twatt
+              small#remove-twatt.text-danger.pointer
                 span.glyphicon.glyphicon-trash
                 | Remove

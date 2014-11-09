@@ -26,6 +26,23 @@ Template.twattList.helpers({
   }
 });
 
+Template.twattList.events({
+  'click #remove-twatt': function(event, tpl) {
+    swal({
+      title: "",
+      text: "Surelly you can't be serious?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "I am serious!",
+      cancelButtonText: "Nope",
+      closeOnCancel: false
+      }, function(isConfirm) {
+        Meteor.call('removeTwatt', { id: this._id });
+      }.bind(this));
+  }
+});
+
 Template.profileSidebar.helpers({
   twattsCount: function() {
     return Twatts.find({ username: Meteor.user().username }).count();
