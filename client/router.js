@@ -32,15 +32,19 @@ Router.route('/reset-password/:token?', function() {
   name: 'resetPassword'
 });
 
-Router.route('/profile', {
-  name: 'profile'
-});
-
 Router.route('/userlist', {
   name: 'userlist',
   waitOn: function() { return Meteor.subscribe('allUsers') },
   data: {
     users: Meteor.users.find()
+  }
+});
+
+Router.route('/profile/:username', {
+  name: 'profile',
+  waitOn: function() { return Meteor.subscribe('allUsers') }, // TODO: subscribe only for particular user
+  data: function() {
+    return Meteor.users.findOne({ username: this.params.username })
   }
 });
 

@@ -3,8 +3,8 @@ function saveTwatt() {
   if(text.length) {
     $('#twatt-input').val('');
     var twatt = {
-      authorId: Meteor.userId(),
-      author: Meteor.user().username,
+      userId: Meteor.userId(),
+      username: Meteor.user().username,
       date: new Date().getTime(),
       text: text };
 

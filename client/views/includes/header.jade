@@ -13,6 +13,10 @@ template(name="header")
             a(href="{{ pathFor 'stream' }}") Twatts stream
           li
             a(href="{{ pathFor 'userlist' }}") All Twatters
+          li
+            with currentUser
+              a(href="{{ pathFor 'profile' username=username }}") Profile
+
         ul.nav.navbar-nav.navbar-right
             li
               a#logout-btn(href="#") Logout, {{ username }}

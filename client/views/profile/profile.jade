@@ -2,7 +2,10 @@ template(name="profile")
   .container
     .row
       .col-xs-12
-        h2 Profile
+        //- h2 Profile
+        h2 #{ username }
+        div Followers: #{ usersToFollow.length }
+
     .row
       form(action="" role="form")
         .form-group
