@@ -13,13 +13,16 @@ template(name="header")
             a(href="{{ pathFor 'stream' }}") Stream
           li
             a(href="{{ pathFor 'userlist' }}") All Twatters
-          li
-            with currentUser
-              a(href="{{ pathFor 'profile' username=username }}") Profile
+
           li.dropdown
             a.dropdown-toggle(href="#", data-toggle="dropdown")
               | {{ username }}
               span.caret
             ul.dropdown-menu
+              li
+                with currentUser
+                  a(href="{{ pathFor 'profile' username=username }}") Profile
+              li
+                a(href="{{ pathFor 'settings' }}") Settings
               li
                 a#logout-btn(href="#") Logout

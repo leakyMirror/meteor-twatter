@@ -28,6 +28,6 @@ Template.twattList.helpers({
 
 Template.profileSidebar.helpers({
   twattsCount: function() {
-    return Twatts.find({ username: Meteor.user().username }).count(); 
+    return Twatts.find({ username: Meteor.user().username }).count();
   }
 });

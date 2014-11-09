@@ -5,9 +5,9 @@ Meteor.publish('streamForUser', function(user) {
   followed.push(user._id);
 
   return Twatts.find(
-      { userId: { $in: followed }},
-      { sort: { date: -1 }}
-    );
+    { userId: { $in: followed }},
+    { sort: { date: -1 }}
+  );
 });
 
 Meteor.publish('allUsers', function() {
@@ -18,4 +18,13 @@ Meteor.publish('allUsers', function() {
       profile: 1
     }
   });
+});
+
+Meteor.publish('ownTwatts', function(username) {
+  if(username && username) {
+    return Twatts.find(
+      { username: username },
+      { sort: { date: -1 }}
+    );
+  }
 });
