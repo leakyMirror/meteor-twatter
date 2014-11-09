@@ -1,4 +1,4 @@
-Template.twattForm.helpers({
+Template.twatts.helpers({
   twatts: Twatts.find()
 });
 
