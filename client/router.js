@@ -13,7 +13,12 @@ Router.route('/register', {
   data: function() { return Meteor.subscribe('allUsers'); }
 });
 
-Router.route('/recover-password', {
+Router.route('/recover-password/:token?', function() {
+  if(this.params.token) {
+    Session.set('resetPassword', this.params.token);
+  }
+  this.render('recoverPassword');
+}, {
   name: 'recoverPassword'
 });
 
@@ -39,7 +44,7 @@ Router.onBeforeAction(function () {
       // TODO: find better solution for this
       switch (this.url) {
         case '/register':
-          this.render('login');
+          this.render('register');
           break;
         case '/recover-password':
           this.render('recoverPassword');
