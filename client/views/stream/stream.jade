@@ -1,6 +1,6 @@
 template(name='stream')
   +twattForm
-  +twatts
+  +twattList
 
 template(name='twattForm')
   .input-group.input-group-lg.twat-input-field
@@ -8,7 +8,7 @@ template(name='twattForm')
     span.input-group-btn
       button#save-twatt.btn.btn-success Twatt!
 
-template(name='twatts')
+template(name='twattList')
   ul.list-group.container-fluid
     each twatts
       li.list-group-item.row

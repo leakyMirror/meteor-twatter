@@ -1,4 +1,4 @@
-Template.twatts.helpers({
+Template.twattList.helpers({
   twatts: Twatts.find()
 });
 

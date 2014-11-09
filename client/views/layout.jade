@@ -1,5 +1,7 @@
 template(name='layout')
-  +header
+  if currentUser
+    +header
+
   div.container
     div.row
       +yield
