@@ -15,6 +15,7 @@ Meteor.publish('allUsers', function() {
     fields: {
       username: 1,
       emails: 1,
+      followers: 1,
       usersToFollow: 1
     }
   });

@@ -4,12 +4,12 @@ template(name="profile")
       .col-xs-12
         //- h2 Profile
         h2 #{ username }
-        div Followers: #{ usersToFollow.length }
+        div Followers: #{ followers.length }
 
     .row
       form(action="" role="form")
         .form-group
-          img(src="http://beerhold.it/128/128", alt="")
+          img(src="http://beerhold.it/128/128", alt="").img-circle
         .form-group
           label(for="email")
             | Email address
