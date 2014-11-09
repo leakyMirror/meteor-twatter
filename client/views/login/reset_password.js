@@ -38,6 +38,8 @@ Template.resetPassword.events({
           toastr.error(err.reason, 'Password Reset Error');
         } else {
           Session.set('resetPassword', null);
+          toastr.success('Use the new one to login.', 'Password changed!');
+          Router.go('login');
         }
         Session.set('loading', false);
       });
