@@ -1,5 +1,10 @@
-Meteor.publish('twattsAuthored', function(userId) {
-  return Twatts.find({ authorId: userId });
+Meteor.publish('streamForUser', function(userId) {
+  var followed = Meteor.users.findOne({ _id: userId }).usersToFollow
+  followed.push(userId)
+
+  return Twatts.find(
+    { authorId: { $in: followed }},
+    { sort: { date: -1 }})
 });
 
 Meteor.publish('allUsers', function() {
