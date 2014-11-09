@@ -1,5 +1,5 @@
 Meteor.methods({
-  follow: function(params) {
+  follow: function(params, callback) {
     if(Meteor.userId() !== params.userId) return false
     if(params.userId === params.userToFollow) return false
 
@@ -10,7 +10,10 @@ Meteor.methods({
 
     Meteor.users.update(
       { _id: params.userToFollow },
-      { $addToSet: { 'profile.followers': params.userId }}
+      { $addToSet: { 'profile.followers': params.userId }},
+      function() {
+        callback.call(null);
+      }
     );
   },
 
