@@ -1,0 +1,8 @@
+template(name="followButton")
+  if isCurrentUser
+    div
+  else
+    if isFollowed
+      button(id="#{_id}").btn.btn-sm.btn-success.follow-btn Followed
+    else
+      button(id="#{_id}").btn.btn-sm.btn-default.follow-btn Follow

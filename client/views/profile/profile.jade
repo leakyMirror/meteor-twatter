@@ -1,17 +1,13 @@
 template(name="profile")
   .container
     .row
-      .col-xs-12
+      .col-xs-12.text-center
         img(src="http://beerhold.it/128/128", alt="").img-circle
         h2 #{ user.username }
+          +followButton user
         ul.list-unstyled
           li Following: #{ user.profile.followedUsers.length }
           li Followers: #{ user.profile.followers.length }
 
-        //- defined in userlist.jade
-        +followButton user
-        //- +log user
-
       //- defined in stream.jade
-      h2 Twatts:
       +twattList
