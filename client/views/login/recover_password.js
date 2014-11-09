@@ -4,11 +4,6 @@ Template.recoverPassword.helpers({
   }
 });
 
-if(Accounts._resetPasswordToken) {
-  console.log('here');
-  Session.set('resetPassword', Accounts._resetPasswordToken);
-}
-
 Template.recoverPassword.events({
   'submit #recovery-form': function(event, tpl) {
     event.preventDefault();
