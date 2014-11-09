@@ -1,7 +1,3 @@
-Template.twattList.helpers({
-  twatts: Twatts.find({}, { sort: { date: -1 }})
-});
-
 function saveTwatt() {
   var text = trimString($('#twatt-input').val());
   if(text.length) {

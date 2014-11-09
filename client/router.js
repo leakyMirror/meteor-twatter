@@ -8,9 +8,10 @@ Router.route('/', {
   name: 'stream',
   waitOn: function() {
     if(Meteor.user()) {
-      return Meteor.subscribe('streamForUser', Meteor.user());
-    }
-  },
+      return Meteor.subscribe('streamForUser', Meteor.user()); }},
+  data: {
+    twatts: Twatts.find({}, { sort: { date: -1 }})
+  }
 });
 
 Router.route('/login', {
@@ -38,6 +39,9 @@ Router.route('/profile', {
 Router.route('/userlist', {
   name: 'userlist',
   waitOn: function() { return Meteor.subscribe('allUsers') },
+  data: {
+    users: Meteor.users.find()
+  }
 });
 
 Router.onBeforeAction(function () {
