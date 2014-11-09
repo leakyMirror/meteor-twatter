@@ -1,6 +1,6 @@
 Template.userlist.helpers({
   isFollowed: function(userId) {
-    return _.contains(Meteor.user().usersToFollow, userId);
+    return _.contains(Meteor.user().profile.followedUsers, userId);
   }
 });
 

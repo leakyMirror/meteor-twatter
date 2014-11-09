@@ -1,6 +1,6 @@
 Meteor.publish('streamForUser', function(user) {
   var userData = Meteor.users.findOne({ _id: user._id }),
-      followed = userData.usersToFollow || [];
+      followed = userData.profile.followedUsers || [];
 
   followed.push(user._id);
 
@@ -15,8 +15,7 @@ Meteor.publish('allUsers', function() {
     fields: {
       username: 1,
       emails: 1,
-      followers: 1,
-      usersToFollow: 1
+      profile: 1
     }
   });
 });

@@ -9,13 +9,13 @@ Template.register.events({
         passwordConfirmation = trimString(tpl.find('#password-confirmation').value),
         isRegistrationValid  = true,
         toastrOptions = {
-          "closeButton": false,
-          "positionClass": "toast-top-right",
-          "onclick": null,
-          "showDuration": "100",
-          "hideDuration": "1000",
-          "timeOut": "5000",
-          "extendedTimeOut": "1000",
+          'closeButton': false,
+          'positionClass': 'toast-top-right',
+          'onclick': null,
+          'showDuration': '100',
+          'hideDuration': '1000',
+          'timeOut': '5000',
+          'extendedTimeOut': '1000',
         };
 
     if(username.length < 4) {
@@ -31,26 +31,37 @@ Template.register.events({
       isRegistrationValid = false;
     }
     if (!isValidEmail(email)) {
-      toastr.error("Email seems to be invalid", '', toastrOptions);
+      toastr.error('Email seems to be invalid', '', toastrOptions);
       isRegistrationValid = false;
     }
     if (!isUsernameUnique(username)) {
-      toastr.error("This username is taken, try another", '', toastrOptions);
+      toastr.error('This username is taken, try another', '', toastrOptions);
       isRegistrationValid = false;
     }
 
     if (!isEmailUnique(email)) {
-      toastr.error("This email is already in use, try another", '', toastrOptions);
-      isRegistrationValid = false; 
+      toastr.error('This email is already in use, try another', '', toastrOptions);
+      isRegistrationValid = false;
     }
 
     if(isRegistrationValid) {
-      Accounts.createUser({ username: username, email: email, password: password }, function(err) {
+      var userData = {
+        username: username,
+        email: email,
+        password: password,
+        profile: {
+          followers: [],
+          followedUsers: [],
+          bio: ''
+        }
+      }
+
+      Accounts.createUser(userData, function(err) {
         if(err) {
           toastr.error(err.reason, '', toastrOptions);
         } else {
           Router.go('stream');
-          console.log("user created successfully");
+          console.log('user created successfully');
         }
       });
     }
