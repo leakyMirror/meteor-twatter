@@ -2,15 +2,14 @@ Template.login.events({
   'submit #login-form': function(event, tpl) {
     event.preventDefault();
 
-    var username = tpl.find('#username').value,
-        password = tpl.find('#password').value;
+    var username = trimString(tpl.find('#username').value),
+        password = trimString(tpl.find('#password').value);
 
     Meteor.loginWithPassword(username, password, function(err) {
       if(err) {
-        console.log("could not login");
+        toastr.error('Wrong login credentials', 'Nope');
       } else {
         Router.go('stream');
-        console.log("logged in");
       }
     });
 
