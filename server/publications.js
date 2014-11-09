@@ -1,7 +1,8 @@
 Meteor.publish('streamForUser', function(userId) {
-  var followed = Meteor.users.findOne({ _id: userId })//.usersToFollow
+  var user = Meteor.users.findOne({ _id: userId })
 
-  if(followed && followed.usersToFollow)
+  if(user && user.usersToFollow)
+    var followed = user.usersToFollow
     followed.push(userId)
 
   return Twatts.find(
