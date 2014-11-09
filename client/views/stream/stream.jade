@@ -1,6 +1,6 @@
 template(name='stream')
   .col-xs-3
-    +profileSidebar
+    +profileSidebar currentUser
   .col-xs-9
     .row
       +twattForm
@@ -14,8 +14,8 @@ template(name='profileSidebar')
     .panel.panel-default
       .panel-body
         ul.list-unstyled
-          li Following: 5
-          li Followers: 5
+          li Following: #{ profile.followedUsers.length }
+          li Followers: #{ profile.followers.length }
 
 template(name='twattForm')
   .col-xs-12.well.well-lg
