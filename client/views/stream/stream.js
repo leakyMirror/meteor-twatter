@@ -19,3 +19,7 @@ Template.twattForm.events({
       saveTwatt()
   }
 });
+
+Template.profileSidebar.helpers({
+  username: Meteor.user().username
+});
