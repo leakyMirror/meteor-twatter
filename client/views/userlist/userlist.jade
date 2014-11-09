@@ -3,22 +3,22 @@ template(name="userlist")
     .row
       .col-xs-12
         h2
-          | Twatter
-          sup &trade;
-          | users
-    .row
-      ul.list-group.container-fluid.col-xs-12
-        each users
-          li.list-group-item.row
-            .col-xs-11
-              a(href="{{ pathFor 'profile' }}")
-                h4 {{username}}
+          | Meet other Twatters
+    .row.user-list-container
+      each users
+        .media.col-md-6.col-lg-4
+          .media-left.media-top
+            img.img-circle(src="http://beerhold.it/64/64", alt="")
 
-              //- p {{biography}}
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, facere.
-            .col-xs-1
-              if isFollowed _id
-                button(id="#{_id}").btn.btn-sm.btn-success.follow-btn Followed
-              else
-                button(id="#{_id}").btn.btn-sm.btn-default.follow-btn Follow
+          .media-body
+            a(href="{{ pathFor 'profile' }}")
+              h4 {{username}}
+            //- p {{biography}}
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, facere.
+
+          .media-right.media-middle
+            if isFollowed _id
+              button(id="#{_id}").btn.btn-sm.btn-success.follow-btn Followed
+            else
+              button(id="#{_id}").btn.btn-sm.btn-default.follow-btn Follow
