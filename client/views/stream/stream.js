@@ -9,17 +9,25 @@ function saveTwatt() {
       text: text };
 
     Twatts.insert(twatt);
-  };
-};
+  }
+}
 
 Template.twattForm.events({
   'click #save-twatt': saveTwatt,
   'keypress #twatt-input': function(event, tpl) {
     if(event.keyCode === 13 || event.which === 13)
-      saveTwatt()
+      saveTwatt();
+  }
+});
+
+Template.twattList.helpers({
+  ownTwatt: function(twatt) {
+    return twatt.username === Meteor.user().username;
   }
 });
 
 Template.profileSidebar.helpers({
-  username: Meteor.user() && Meteor.user().username
+  twattsCount: function() {
+    return Twatts.find({ username: Meteor.user().username }).count(); 
+  }
 });

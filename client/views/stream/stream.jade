@@ -8,32 +8,48 @@ template(name='stream')
 
 template(name='profileSidebar')
   .profile-sidebar
-    .profile-picture
-      img.img-circle(src="http://beerhold.it/128/128", alt="")
-      h3 #{ username }
+    with currentUser
+      .profile-picture
+        a(href="{{ pathFor 'profile' username=username}}")
+          img.img-circle(src="http://beerhold.it/128/128", alt="")
+        h3
+          a(href="{{ pathFor 'profile' username=username}}") #{ username }
     .panel.panel-default
       .panel-body
-        ul.list-unstyled
-          li Following: #{ profile.followedUsers.length }
-          li Followers: #{ profile.followers.length }
+        ul.list-inline.text-center
+          li
+            h3 #{ twattsCount }
+            span Twatts
+          li
+            h3 #{ profile.followedUsers.length }
+            span Following
+          li
+            h3 #{ profile.followers.length }
+            span Followers
 
 template(name='twattForm')
   .col-xs-12.well.well-lg
     .input-group.input-group-lg.twat-input-field
       input#twatt-input.form-control.message-field(type='text' placeholder="What yo wanna twatt 'bout?")
       span.input-group-btn
-        button#save-twatt.btn.btn-success Twatt!
+        button#save-twatt.btn.btn-success
+          span.glyphicon.glyphicon-send
+          | Twatt!
 
 template(name='twattList')
-  .col-xs-12
-    ul.list-group
-      each twatts
-        li.list-group-item.row
-          .col-xs-11
-            a(href="{{ pathFor 'profile' }}")
-              h5
-                b #{ username }
-            p #{ text }
-          .col-xs-1
-            button#remove-twatt.btn.btn-xs.btn-danger.pull-right
-              span.glyphicon.glyphicon-trash
+  .col-xs-12.twatt-list
+    each twatts
+      .media.single-twatt-container
+        .media-left.media-top
+          img.img-circle(src="http://beerhold.it/64/64", alt="")
+
+        .media-body
+          a(href="{{ pathFor 'profile' }}")
+            h5
+              b #{ username }
+          p #{ text }
+          .twatt-options
+            if ownTwatt this
+              small.text-danger#remove-twatt
+                span.glyphicon.glyphicon-trash
+                | Remove
