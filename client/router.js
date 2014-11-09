@@ -18,13 +18,13 @@ Router.route('/register', {
   data: function() { return Meteor.subscribe('allUsers'); }
 });
 
-Router.route('/recover-password/:token?', function() {
+Router.route('/reset-password/:token?', function() {
   if(this.params.token) {
     Session.set('resetPassword', this.params.token);
   }
-  this.render('recoverPassword');
+  this.render('resetPassword');
 }, {
-  name: 'recoverPassword'
+  name: 'resetPassword'
 });
 
 Router.route('/profile', {
@@ -41,19 +41,11 @@ Router.onBeforeAction(function () {
     if(Meteor.loggingIn()) {
       this.render(this.loadingTemplate);
     } else {
-      // TODO: find better solution for this
-      switch (this.url) {
-        case '/register':
-          this.render('register');
-          break;
-        case '/recover-password':
-          this.render('recoverPassword');
-          break;
-        default:
-          this.render('login');
-      }
+      this.render('login');
     }
   } else {
     this.next();
   }
+}, {
+  except: ['register', 'resetPassword']
 });

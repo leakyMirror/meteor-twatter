@@ -1,14 +1,14 @@
-Template.recoverPassword.helpers({
+Template.resetPassword.helpers({
   resetPassword: function() {
     return Session.get('resetPassword');
   }
 });
 
-Template.recoverPassword.events({
-  'submit #recovery-form': function(event, tpl) {
+Template.resetPassword.events({
+  'submit #reset-form': function(event, tpl) {
     event.preventDefault();
 
-    var email = trimString(tpl.find('#recovery-email').value);
+    var email = trimString(tpl.find('#reset-email').value);
 
     if(isValidEmail(email)) {
       Session.set('loading', true);
@@ -34,9 +34,12 @@ Template.recoverPassword.events({
       Session.set('loading', true);
       Accounts.resetPassword(Session.get('resetPassword'), password, function(err) {
         if(err) {
-          toastr.warning('Password Reset Error, sorry');
+          console.log(err);
+          toastr.error(err.reason, 'Password Reset Error');
         } else {
           Session.set('resetPassword', null);
+          toastr.success('Use the new one to login.', 'Password changed!');
+          Router.go('login');
         }
         Session.set('loading', false);
       });

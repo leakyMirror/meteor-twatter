@@ -15,7 +15,4 @@ template(name="header")
             a(href="{{ pathFor 'userlist' }}") All Twatters
         ul.nav.navbar-nav.navbar-right
             li
-              unless loggedIn
-                a(href="{{ pathFor 'login' }}") Login
-              else
-                a#logout-btn(href="#") Logout, {{ username }}
+              a#logout-btn(href="#") Logout, {{ username }}
