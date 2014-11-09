@@ -16,6 +16,6 @@ Template.login.events({
     return false;
   },
   'click #display-register-form': function(event, tpl) {
-    Blaze.render('register');
+    Router.go('register');
   }
 });

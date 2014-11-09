@@ -18,6 +18,19 @@ Router.route('/login', {
   name: 'login'
 });
 
+Router.onBeforeAction(function() {
+  $('body').addClass('login-route');
+  this.next();
+}, {
+  only: ['login']
+});
+
+Router.onStop(function() {
+  $('body').removeClass('login-route');
+}, {
+  only: ['login']
+});
+
 Router.route('/register', {
   name: 'register',
   data: function() { return Meteor.subscribe('allUsers'); }
@@ -65,7 +78,8 @@ Router.onBeforeAction(function () {
     if(Meteor.loggingIn()) {
       this.render(this.loadingTemplate);
     } else {
-      this.render('login');
+      Router.go('login');
+      this.next();
     }
   } else {
     this.next();
