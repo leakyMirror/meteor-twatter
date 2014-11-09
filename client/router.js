@@ -6,7 +6,7 @@ Router.configure({
 
 Router.route('/', {
   name: 'stream',
-  waitOn: function() { return Meteor.subscribe('twattsAuthored', Meteor.userId()); },
+  waitOn: function() { return Meteor.subscribe('streamForUser', Meteor.userId()); },
 });
 
 Router.route('/login', {
@@ -57,5 +57,3 @@ Router.onBeforeAction(function () {
     this.next();
   }
 });
-
-
