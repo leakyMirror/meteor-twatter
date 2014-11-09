@@ -8,9 +8,10 @@ Router.route('/', {
   name: 'stream',
   waitOn: function() {
     if(Meteor.user()) {
-      return Meteor.subscribe('streamForUser', Meteor.user());
-    }
-  },
+      return Meteor.subscribe('streamForUser', Meteor.user()); }},
+  data: {
+    twatts: Twatts.find({}, { sort: { date: -1 }})
+  }
 });
 
 Router.route('/login', {
@@ -31,13 +32,20 @@ Router.route('/reset-password/:token?', function() {
   name: 'resetPassword'
 });
 
-Router.route('/profile', {
-  name: 'profile'
-});
-
 Router.route('/userlist', {
   name: 'userlist',
   waitOn: function() { return Meteor.subscribe('allUsers') },
+  data: {
+    users: Meteor.users.find()
+  }
+});
+
+Router.route('/profile/:username', {
+  name: 'profile',
+  waitOn: function() { return Meteor.subscribe('allUsers') }, // TODO: subscribe only for particular user
+  data: function() {
+    return Meteor.users.findOne({ username: this.params.username })
+  }
 });
 
 Router.onBeforeAction(function () {

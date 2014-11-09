@@ -1,14 +1,10 @@
-Template.twattList.helpers({
-  twatts: Twatts.find({}, { sort: { date: -1 }})
-});
-
 function saveTwatt() {
   var text = trimString($('#twatt-input').val());
   if(text.length) {
     $('#twatt-input').val('');
     var twatt = {
-      authorId: Meteor.userId(),
-      author: Meteor.user().username,
+      userId: Meteor.userId(),
+      username: Meteor.user().username,
       date: new Date().getTime(),
       text: text };
 

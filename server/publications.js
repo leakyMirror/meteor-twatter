@@ -5,7 +5,7 @@ Meteor.publish('streamForUser', function(user) {
   followed.push(user._id);
 
   return Twatts.find(
-      { authorId: { $in: followed }},
+      { userId: { $in: followed }},
       { sort: { date: -1 }}
     );
 });

@@ -1,19 +1,21 @@
-template(name='stream')
+template(name="stream")
   +twattForm
   +twattList
 
-template(name='twattForm')
+template(name="twattForm")
   .input-group.input-group-lg.twat-input-field
-    input#twatt-input.form-control.message-field(type='text' placeholder="What yo wanna twatt 'bout?")
+    input#twatt-input.form-control.message-field(type="text" placeholder="What yo wanna twatt 'bout?")
     span.input-group-btn
       button#save-twatt.btn.btn-success Twatt!
 
-template(name='twattList')
+template(name="twattList")
   ul.list-group.container-fluid
     each twatts
       li.list-group-item.row
         .col-xs-11
-          h5 #{ author }
+          a(href="{{ pathFor 'profile' }}")
+            h5
+              b #{ username }:
           p #{ text }
         .col-xs-1
           button#remove-twatt.btn.btn-xs.btn-danger.pull-right
