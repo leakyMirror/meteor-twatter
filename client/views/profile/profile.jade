@@ -5,9 +5,9 @@ template(name="profile")
         img(src="http://beerhold.it/128/128", alt="").img-circle
         h2 #{ user.username }
           +followButton user
-        ul.list-unstyled
-          li Following: #{ user.profile.followedUsers.length }
-          li Followers: #{ user.profile.followers.length }
+        with currentUser
+          //- defined in stream.jade
+          +profileNumbers
 
       //- defined in stream.jade
       +twattList

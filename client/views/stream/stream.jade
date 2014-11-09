@@ -16,16 +16,19 @@ template(name='profileSidebar')
           a(href="{{ pathFor 'profile' username=username}}") #{ username }
     .panel.panel-default
       .panel-body
-        ul.list-inline.text-center
-          li
-            h3 #{ twattsCount }
-            span Twatts
-          li
-            h3 #{ profile.followedUsers.length }
-            span Following
-          li
-            h3 #{ profile.followers.length }
-            span Followers
+        +profileNumbers
+
+template(name='profileNumbers')
+  ul.list-inline.text-center
+    li
+      h3 #{ twattsCount }
+      span Twatts
+    li
+      h3 #{ profile.followedUsers.length }
+      span Following
+    li
+      h3 #{ profile.followers.length }
+      span Followers
 
 template(name='twattForm')
   .col-xs-12.well.well-lg
