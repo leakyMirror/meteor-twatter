@@ -13,9 +13,7 @@ template(name="userlist")
           .media-body
             a(href="{{ pathFor 'profile' }}")
               h4 #{username}
-            //- p {{biography}}
-            p
-              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, facere.
+            p #{ profile.bio }
 
           .media-right.media-middle
             +followButton this

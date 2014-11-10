@@ -33,5 +33,16 @@ Meteor.methods({
 
   removeTwatt: function(params) {
     Twatts.remove(params.id);
+  },
+
+  updateProfile: function(params) {
+    Meteor.users.update({
+      username: params.username
+    }, {
+      $set: {
+        'profile.realname': params.realname,
+        'profile.bio': params.bio
+      }
+    });
   }
 });

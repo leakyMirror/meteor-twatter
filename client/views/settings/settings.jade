@@ -1,26 +1,32 @@
 template(name="settings")
   .container
-    //- .row
-    //-   .col-xs-12
-        //- img(src="http://beerhold.it/128/128", alt="").img-circle
-        //- h2 Profile
-        //- h2 #{ username }
-        //- div Followers: #{ profile.followers.length }
-
     .row
-      form(action="" role="form")
-        //- .form-group
-        .form-group
-          label(for="email")
-            | Email address
-          input.form-control#email(type="email" placeholder="#{ email }" disabled)
-        .form-group
-          label(for="username")
-            | Username
-          input.form-control#username(type="text" placeholder="#{ username }" disabled)
-        .form-group
-          label(for="realname")
-            | Real name
-          input.form-control#realname(type="text" placeholder="#{ realname }")
-        .form-group
-          input.btn.btn-success#save-profile(type="submit" value="Save")
+      .col-md-3.text-center
+        img(src="http://beerhold.it/128/128", alt="").img-circle
+        with currentUser
+          h2 #{ username }
+          //- defined in stream.jade
+          +profileNumbers
+
+      with currentUser
+        .col-md-9
+          form#settings-form(action="" role="form")
+            .form-group
+              label(for="email")
+                | Email address
+              input.form-control#email(type="email" placeholder="#{ emails }" disabled)
+            .form-group
+              label(for="username")
+                | Username
+              input.form-control#username(type="text" placeholder="#{ username }" disabled)
+            .form-group
+              label(for="realname")
+                | Real name
+              input.form-control#realname(type="text" placeholder="#{ profile.realname }")
+            .form-group
+              label(for="bio")
+                | About you
+              textarea.form-control#bio(rows="3")
+                | #{ profile.bio }
+            .form-group
+              input.btn.btn-success#save-profile(type="submit" value="Save")

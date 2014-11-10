@@ -49,6 +49,6 @@ Template.twattList.events({
 
 Template.profileNumbers.helpers({
   twattsCount: function() {
-    return Twatts.find({ username: Meteor.user().username }).count();
+    return Twatts.find({ username: this.username }).count();
   }
 });

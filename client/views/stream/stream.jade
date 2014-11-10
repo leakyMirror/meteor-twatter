@@ -14,9 +14,9 @@ template(name='profileSidebar')
           img.img-circle(src="http://beerhold.it/128/128", alt="")
         h3
           a(href="{{ pathFor 'profile' username=username}}") #{ username }
-    .panel.panel-default
-      .panel-body
-        +profileNumbers
+      .panel.panel-default
+        .panel-body
+          +profileNumbers
 
 template(name='profileNumbers')
   ul.list-inline.text-center
