@@ -1,6 +1,9 @@
 Template.twattList.helpers({
   ownsTwatt: function(twatt) {
     return twatt.username === Meteor.user().username;
+  },
+  twattTimestamp: function() {
+    return moment(this.date).from();
   }
 });
 

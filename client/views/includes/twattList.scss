@@ -1,0 +1,25 @@
+.twatt-list {
+  .single-twatt-container {
+    position: relative;
+    padding: 10px;
+
+    &:hover {
+      background: rgba(200, 200, 200, .2);
+
+      .twatt-options {
+        opacity: 1;
+      }
+    }
+  }
+
+  .twatt-options {
+    opacity: 0;
+    transition: .2s ease all;
+  }
+
+  .twatt-time {
+    position: absolute;
+    bottom: 10%;
+    right: 2%;
+  }
+}

@@ -11,6 +11,7 @@ template(name='twattList')
             h5
               b #{ username }
           p #{ text }
+          small.twatt-time.text-muted #{ twattTimestamp }
           .twatt-options
             if ownsTwatt this
               small#remove-twatt.text-danger.pointer
