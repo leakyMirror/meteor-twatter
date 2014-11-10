@@ -7,7 +7,7 @@ Template.settings.events({
       realname: trimString(tpl.find('#realname').value),
       bio: trimString(tpl.find('#bio').value)
     }, function() {
-
+      toastr.success('Profile saved!');
     });
 
     return false;
