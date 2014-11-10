@@ -30,9 +30,13 @@ Meteor.publish('ownTwatts', function(username) {
 });
 
 Meteor.publish('connectedUsers', function(params) {
-  var user = params.user || false;
+  var user = Meteor.users.findOne({ username: params.username })
   if(user) {
+    var fields =  { username: 1, emails: 1, profile: 1 }
     var list = user.profile[params.type]; // type is 'following' or 'followers'
-    return Meteor.users.find({ _id: { $in: list } });
+    console.log(list)
+    // a = Meteor.users.find({ _id: { $in: list } }, { fields: fields });
+    a = Meteor.users.find()
+    return a
   }
 });
