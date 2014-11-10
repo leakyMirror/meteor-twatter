@@ -8,7 +8,8 @@ template(name="userlist")
       each users
         .media.col-md-6.col-lg-4
           .media-left.media-top
-            img.img-circle(src="http://beerhold.it/64/64", alt="")
+            //- img.img-circle(src="http://beerhold.it/64/64", alt="")
+            +gravatar
 
           .media-body
             a(href="{{ pathFor 'profile' }}")
@@ -23,5 +24,4 @@ template(name="userlist")
 
 template(name="log")
   h1 log
-  pre
-    {{print}}
+  pre {{print}}
