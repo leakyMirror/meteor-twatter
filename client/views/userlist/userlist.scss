@@ -1,5 +1,16 @@
 .user-list-container {
   .media {
-    margin-top: 0;
+    margin: 1.5em 0;
+  }
+
+  .media-left {
+    position: relative;
+  }
+
+  .follow-btn-container {
+    position: absolute;
+    left: 0; right: 5%;
+    bottom: 5%;
+    text-align: center
   }
 }

@@ -9,11 +9,10 @@ template(name="userlist")
         .media.col-md-6.col-lg-4
           .media-left.media-top
             +gravatar
+            .follow-btn-container
+              +followButton this
 
           .media-body
             a(href="{{ pathFor 'profile' }}")
               h4 #{username}
             p #{ profile.bio }
-
-          .media-right.media-middle
-            +followButton this
