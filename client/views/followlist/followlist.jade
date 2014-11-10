@@ -1,0 +1,9 @@
+template(name='followlist')
+  each users
+    if isCurrentUser
+      //- dont show yourself
+      div
+    else
+      +gravatar context=this size=64
+      h3 #{ username }
+        +followButton this

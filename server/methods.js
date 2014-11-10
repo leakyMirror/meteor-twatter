@@ -5,7 +5,7 @@ Meteor.methods({
 
     Meteor.users.update(
       { _id: params.userId },
-      { $addToSet: { 'profile.followedUsers': params.userToFollow }}
+      { $addToSet: { 'profile.following': params.userToFollow }}
     );
 
     Meteor.users.update(
@@ -22,7 +22,7 @@ Meteor.methods({
 
     Meteor.users.update(
       { _id: params.userId },
-      { $pull: { 'profile.followedUsers': params.userToUnfollow }}
+      { $pull: { 'profile.following': params.userToUnfollow }}
     );
 
     Meteor.users.update(

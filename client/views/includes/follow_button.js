@@ -1,15 +1,3 @@
-Template.followButton.helpers({
-  isFollowed: function() {
-    if(Meteor.user())
-      var user = this
-      return _.contains(Meteor.user().profile.followedUsers, user._id);
-  },
-  isCurrentUser: function() {
-    var user = this
-    return user._id === Meteor.user()._id
-  }
-});
-
 Template.followButton.events({
   'click .follow-btn': function(e,t) {
     var state = $(e.currentTarget).text();

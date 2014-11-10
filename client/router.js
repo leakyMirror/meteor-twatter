@@ -4,6 +4,7 @@ Router.configure({
   loadingTemplate: 'loading'
 });
 
+// TODO: find a better way to organize routes. Current way is too messy.
 Router.route('/', {
   name: 'stream',
   waitOn: function() {
@@ -72,6 +73,18 @@ Router.route('/profile/:username', {
 Router.route('/settings', {
   name: 'settings'
 });
+
+Router.route('profile/:username/:type', {
+  name: 'followlist',
+  waitOn: function() {
+    var params = { user: Meteor.user(), type: this.params.type };
+    return Meteor.subscribe('relatedUsers', params)
+  },
+  data: {
+    users: Meteor.users.find()
+  }
+});
+
 
 Router.onBeforeAction(function () {
   if(!Meteor.user()) {

@@ -1,3 +1,4 @@
 template(name='gravatar')
-  //- Takes currentUser or twatt as a context
-  img.img-circle(src="#{ gravatarUrl }", alt="")
+  //- Takes user or twatt as a context
+  //- Takes number as size
+  img.img-circle(src='{{ gravatarUrl size }}', alt='')

@@ -2,7 +2,7 @@ template(name='profile')
   .container
     .row
       .col-xs-12.text-center
-        +gravatar user
+        +gravatar context=user size=128
         h2 #{ user.username }
           +followButton user
         +profileNumbers user

@@ -1,0 +1,14 @@
+template(name='profileNumbers')
+  //- Takes user as a context
+  ul.list-inline.text-center
+    li
+      h3 #{ twattsCount }
+      span Twatts
+    li
+      a(href="{{ pathFor 'followlist' username=username type='following' }}")
+        h3 #{ profile.following.length }
+      span Following
+    li
+      a(href="{{ pathFor 'followlist' username=username type='followers' }}")
+        h3 #{ profile.followers.length }
+      span Followers
