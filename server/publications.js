@@ -29,10 +29,10 @@ Meteor.publish('ownTwatts', function(username) {
   }
 });
 
-Meteor.publish('relatedUsers', function(params) {
-  var user = params.user || false
+Meteor.publish('connectedUsers', function(params) {
+  var user = params.user || false;
   if(user) {
-    var list = user.profile[params.type]; // type is following or followers
+    var list = user.profile[params.type]; // type is 'following' or 'followers'
     return Meteor.users.find({ _id: { $in: list } });
   }
 });

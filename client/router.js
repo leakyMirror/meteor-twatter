@@ -78,7 +78,7 @@ Router.route('profile/:username/:type', {
   name: 'followlist',
   waitOn: function() {
     var params = { user: Meteor.user(), type: this.params.type };
-    return Meteor.subscribe('relatedUsers', params)
+    return Meteor.subscribe('connectedUsers', params)
   },
   data: {
     users: Meteor.users.find()
