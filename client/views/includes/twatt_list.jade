@@ -4,7 +4,7 @@ template(name='twattList')
     each this
       .media.single-twatt-container
         .media-left.media-top
-          +gravatar this
+          +gravatar context=this size=64
 
         .media-body
           a(href="{{ pathFor 'profile' }}")

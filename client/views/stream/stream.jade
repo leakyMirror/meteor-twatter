@@ -10,10 +10,10 @@ template(name='profileSidebar')
   .profile-sidebar
     with currentUser
       .profile-picture
-        a(href="{{ pathFor 'profile' username=username}}")
-          +gravatar this
+        a(href="{{ pathFor 'profile' username=username }}")
+          +gravatar context=this size=128
         h3
-          a(href="{{ pathFor 'profile' username=username}}") #{ username }
+          a(href="{{ pathFor 'profile' username=username }}") #{ username }
       .panel.panel-default
         .panel-body
           +profileNumbers this

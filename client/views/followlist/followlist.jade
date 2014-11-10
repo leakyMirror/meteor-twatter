@@ -1,0 +1,8 @@
+template(name='followlist')
+  each users
+    if isCurrentUser
+      div
+    else
+      +gravatar context=this size=64
+      h2 #{ username }
+        +followButton this

@@ -51,7 +51,7 @@ Template.register.events({
         password: password,
         profile: {
           followers: [],
-          followedUsers: [],
+          following: [],
           bio: ''
         }
       }

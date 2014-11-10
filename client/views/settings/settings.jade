@@ -2,7 +2,7 @@ template(name='settings')
   .container
     .row
       .col-md-3.text-center
-        +gravatar currentUser
+        +gravatar context=currentUser size=128
         h2 #{ username }
         +profileNumbers currentUser
 

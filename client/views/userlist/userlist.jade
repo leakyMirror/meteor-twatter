@@ -8,7 +8,7 @@ template(name="userlist")
       each users
         .media.col-md-6.col-lg-4
           .media-left.media-top
-            +gravatar
+            +gravatar context=this size=128
 
           .media-body
             a(href="{{ pathFor 'profile' }}")

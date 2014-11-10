@@ -1,8 +1,6 @@
 #### Some conventions and notes for development
 
-  - If a template is used in more than one view, it should be defined in ```client/views/includes/``` as a separate file.
-
-  For example: ```gravatar``` template: [client/views/includes/gravatar](https://github.com/leakyMirror/meteor-twatter/blob/master/client/views/includes/gravatar.jade)
+  - If a template is used in more than one view, it should be defined in ```client/views/includes/``` as a separate file. For example: ```gravatar``` template: [client/views/includes/gravatar](https://github.com/leakyMirror/meteor-twatter/blob/master/client/views/includes/gravatar.jade)
 
   - If template requires a contentex, it should be defined explicitly when called (same as a function with parameters):
   ```jade
@@ -28,5 +26,5 @@
 
   Usage:
   ```bash
-  searchMeteor 'todo'
+  searchMeteor 'helpers'
   ```
