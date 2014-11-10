@@ -11,12 +11,16 @@ template(name='profileSidebar')
     with currentUser
       .profile-picture
         a(href="{{ pathFor 'profile' username=username}}")
-          img.img-circle(src="http://beerhold.it/128/128", alt="")
+          +gravatar
+          //- img.img-circle(src="http://beerhold.it/128/128", alt="")
         h3
           a(href="{{ pathFor 'profile' username=username}}") #{ username }
       .panel.panel-default
         .panel-body
           +profileNumbers
+
+template(name='gravatar')
+  img.img-circle(src="#{ gravatarUrl }", alt="")
 
 template(name='profileNumbers')
   ul.list-inline.text-center
@@ -44,7 +48,8 @@ template(name='twattList')
     each twatts
       .media.single-twatt-container
         .media-left.media-top
-          img.img-circle(src="http://beerhold.it/64/64", alt="")
+          //- img.img-circle(src="http://beerhold.it/64/64", alt="")
+          +gravatar this
 
         .media-body
           a(href="{{ pathFor 'profile' }}")
