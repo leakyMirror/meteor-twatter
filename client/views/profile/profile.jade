@@ -5,7 +5,7 @@ template(name="profile")
         img(src="http://beerhold.it/128/128", alt="").img-circle
         h2 #{ user.username }
           +followButton user
-        with currentUser
+        with user
           //- defined in stream.jade
           +profileNumbers
 
