@@ -1,14 +1,10 @@
-template(name="profile")
+template(name='profile')
   .container
     .row
       .col-xs-12.text-center
-        //- img(src="http://beerhold.it/128/128", alt="").img-circle
         +gravatar user
         h2 #{ user.username }
           +followButton user
-        with user
-          //- defined in stream.jade
-          +profileNumbers
+        +profileNumbers user
 
-      //- defined in stream.jade
-      +twattList
+      +twattList twatts

@@ -4,35 +4,19 @@ template(name='stream')
   .col-md-9
     .row
       +twattForm
-      +twattList
+      +twattList twatts
 
 template(name='profileSidebar')
   .profile-sidebar
     with currentUser
       .profile-picture
         a(href="{{ pathFor 'profile' username=username}}")
-          +gravatar
-          //- img.img-circle(src="http://beerhold.it/128/128", alt="")
+          +gravatar this
         h3
           a(href="{{ pathFor 'profile' username=username}}") #{ username }
       .panel.panel-default
         .panel-body
-          +profileNumbers
-
-template(name='gravatar')
-  img.img-circle(src="#{ gravatarUrl }", alt="")
-
-template(name='profileNumbers')
-  ul.list-inline.text-center
-    li
-      h3 #{ twattsCount }
-      span Twatts
-    li
-      h3 #{ profile.followedUsers.length }
-      span Following
-    li
-      h3 #{ profile.followers.length }
-      span Followers
+          +profileNumbers this
 
 template(name='twattForm')
   .col-xs-12.well.well-lg
@@ -42,22 +26,3 @@ template(name='twattForm')
         button#save-twatt.btn.btn-success
           span.glyphicon.glyphicon-send
           | Twatt!
-
-template(name='twattList')
-  .col-xs-12.twatt-list
-    each twatts
-      .media.single-twatt-container
-        .media-left.media-top
-          //- img.img-circle(src="http://beerhold.it/64/64", alt="")
-          +gravatar this
-
-        .media-body
-          a(href="{{ pathFor 'profile' }}")
-            h5
-              b #{ username }
-          p #{ text }
-          .twatt-options
-            if ownTwatt this
-              small#remove-twatt.text-danger.pointer
-                span.glyphicon.glyphicon-trash
-                | Remove

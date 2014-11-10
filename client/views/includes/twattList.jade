@@ -1,0 +1,18 @@
+template(name='twattList')
+  //- Takes a collection of twatts as a context
+  .col-xs-12.twatt-list
+    each this
+      .media.single-twatt-container
+        .media-left.media-top
+          +gravatar this
+
+        .media-body
+          a(href="{{ pathFor 'profile' }}")
+            h5
+              b #{ username }
+          p #{ text }
+          .twatt-options
+            if ownsTwatt this
+              small#remove-twatt.text-danger.pointer
+                span.glyphicon.glyphicon-trash
+                | Remove

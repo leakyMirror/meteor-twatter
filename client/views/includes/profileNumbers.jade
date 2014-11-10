@@ -1,0 +1,12 @@
+template(name='profileNumbers')
+  //- Takes currentUser as a context
+  ul.list-inline.text-center
+    li
+      h3 #{ twattsCount }
+      span Twatts
+    li
+      h3 #{ profile.followedUsers.length }
+      span Following
+    li
+      h3 #{ profile.followers.length }
+      span Followers

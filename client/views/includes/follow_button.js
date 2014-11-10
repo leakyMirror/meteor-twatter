@@ -1,13 +1,12 @@
 Template.followButton.helpers({
   isFollowed: function() {
     if(Meteor.user())
-      return _.contains(Meteor.user().profile.followedUsers, this._id);
+      var user = this
+      return _.contains(Meteor.user().profile.followedUsers, user._id);
   },
   isCurrentUser: function() {
-    a = this._id === Meteor.user()._id
-    console.log(a)
-    return a
-    // return this._id === Meteor.user()._id
+    var user = this
+    return user._id === Meteor.user()._id
   }
 });
 

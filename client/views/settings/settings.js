@@ -1,4 +1,4 @@
-Template.settings.events({
+Template.settingsForm.events({
   'submit #settings-form': function(event, tpl) {
     event.preventDefault();
 
