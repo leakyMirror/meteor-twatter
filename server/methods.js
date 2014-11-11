@@ -10,10 +10,10 @@ Meteor.methods({
 
     Meteor.users.update(
       { _id: params.userToFollow },
-      { $addToSet: { 'profile.followers': params.userId }},
-      function() {
-        callback.call(null);
-      }
+      { $addToSet: { 'profile.followers': params.userId }}//,
+      // function() {
+      //   callback.call(null);
+      // }
     );
   },
 
@@ -43,8 +43,8 @@ Meteor.methods({
         'profile.realname': params.realname,
         'profile.bio': params.bio
       }
-    }, function() {
-      callback.call(null);
+    //}, function() {
+    //  callback.call(null);
     });
   }
 });
