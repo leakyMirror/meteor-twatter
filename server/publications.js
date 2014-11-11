@@ -29,14 +29,14 @@ Meteor.publish('ownTwatts', function(username) {
   }
 });
 
-Meteor.publish('connectedUsers', function(params) {
+Meteor.publish('relatedUsers', function(params) {
+  check(params, { type: String, username: String })
   var user = Meteor.users.findOne({ username: params.username })
+
   if(user) {
-    var fields =  { username: 1, emails: 1, profile: 1 }
-    var list = user.profile[params.type]; // type is 'following' or 'followers'
-    console.log(list)
-    // a = Meteor.users.find({ _id: { $in: list } }, { fields: fields });
-    a = Meteor.users.find()
-    return a
+    var list = user.profile[params.type], // type is 'following' or 'followers'
+        filteredList = _.filter(list, function(d) { return d._id !== user._id })
+
+    return []
   }
 });

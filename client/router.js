@@ -77,12 +77,10 @@ Router.route('/settings', {
 Router.route('profile/:username/:type', {
   name: 'followlist',
   waitOn: function() {
-    return Meteor.subscribe('connectedUsers', _.pick(this.params, 'username', 'type'))
+    return Meteor.subscribe('relatedUsers', _.pick(this.params, 'username', 'type'))
   },
   data: function() {
-    var a = Meteor.users.find()
-    console.log(a.fetch())
-    return { users: a }
+
   }
 });
 
