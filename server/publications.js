@@ -1,8 +1,9 @@
-Meteor.publish('streamForUser', function(user) {
-  var userData = Meteor.users.findOne({ _id: user._id }),
-      followed = userData.profile.following || [];
+Meteor.publish('userStream', function(params) {
+  console.log(params)
+  check(params, { _id: String, following: Array })
 
-  followed.push(user._id);
+  followed = params.following;
+  followed.push(params._id);
 
   return Twatts.find(
     { userId: { $in: followed }},
@@ -20,13 +21,9 @@ Meteor.publish('allUsers', function(user) {
   });
 });
 
-Meteor.publish('ownTwatts', function(username) {
-  if(username && username) {
-    return Twatts.find(
-      { username: username },
-      { sort: { date: -1 } }
-    );
-  }
+Meteor.publish('userProfile', function(username) {
+  check(username, String)
+  return Meteor.users.find({ username: username })
 });
 
 Meteor.publish('relatedUsers', function(params) {
