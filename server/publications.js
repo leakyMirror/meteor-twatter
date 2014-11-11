@@ -37,6 +37,6 @@ Meteor.publish('relatedUsers', function(params) {
     var list = user.profile[params.type], // type is 'following' or 'followers'
         filteredList = _.filter(list, function(d) { return d._id !== user._id })
 
-    return []
+    return Meteor.users.find({ _id: { $in: filteredList } })
   }
 });

@@ -1,3 +1,11 @@
+Template.registerHelper('equal', function(a,b) {
+  return a === b
+});
+
+Template.registerHelper('log', function(a) {
+  console.log(a)
+});
+
 Template.registerHelper('isCurrentUser', function() {
   var user = this;
   return user._id === Meteor.user()._id;

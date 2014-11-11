@@ -1,9 +1,6 @@
 template(name='followlist')
   each users
-    if isCurrentUser
-      //- dont show yourself
-      div
-    else
+    unless equal ../profileOwner this.username
       +gravatar context=this size=64
       h3 #{ username }
         +followButton this

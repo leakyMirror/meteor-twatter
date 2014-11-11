@@ -80,7 +80,11 @@ Router.route('profile/:username/:type', {
     return Meteor.subscribe('relatedUsers', _.pick(this.params, 'username', 'type'))
   },
   data: function() {
-
+    var that = this
+    return {
+      users: Meteor.users.find(),
+      profileOwner: function() { return that.params.username }
+    }
   }
 });
 
