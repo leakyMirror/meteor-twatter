@@ -1,27 +1,19 @@
 function saveTwatt() {
-  var text = trimString($('#twatt-input').val());
-  if(text.length) {
-    $('#twatt-input').val('');
+  return function(event,tmpl) {
+    var returnKey = event.keyCode === 13 || event.which === 13;
+    var click = event.keyCode === 1 || event.which === 1;
 
-    if(Meteor.user() && Meteor.user().emails) {
-      var mail = Meteor.user().emails[0].address
-
-      var twatt = {
-        userId: Meteor.userId(),
-        username: Meteor.user().username,
-        gravatarHash: gravatarHash(mail),
-        date: new Date().getTime(),
-        text: text };
-
-      Twatts.insert(twatt);
+    if(click || returnKey) {
+      var text = trimString($('#twatt-input').val());
+      if(text.length) {
+        $('#twatt-input').val('');
+        Meteor.call('saveTwatt', text);
+      }
     }
   }
 }
 
 Template.twattForm.events({
-  'click #save-twatt': saveTwatt,
-  'keypress #twatt-input': function(event, tpl) {
-    if(event.keyCode === 13 || event.which === 13)
-      saveTwatt();
-  }
+  'click #save-twatt': saveTwatt(),
+  'keypress #twatt-input': saveTwatt()
 });

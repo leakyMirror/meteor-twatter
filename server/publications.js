@@ -1,13 +1,14 @@
 Meteor.publish('userStream', function(params) {
   if(!params) return []
-  console.log(params)
-  check(params, { _id: String, following: Array })
+  check(params, { username: String, following: Array })
 
   followed = params.following;
-  followed.push(params._id);
+  followed.push(params.username);
+
+  console.log('stream publication hit')
 
   return Twatts.find(
-    { userId: { $in: followed }},
+    { username: { $in: followed }},
     { sort: { date: -1 }}
   );
 });
@@ -24,6 +25,7 @@ Meteor.publish('allUsers', function(user) {
 
 Meteor.publish('userProfile', function(username) {
   check(username, String)
+  console.log('user profile publication hit')
   return Meteor.users.find({ username: username })
 });
 
@@ -33,8 +35,8 @@ Meteor.publish('relatedUsers', function(params) {
 
   if(user) {
     var list = user.profile[params.type], // type is 'following' or 'followers'
-        filteredList = _.filter(list, function(d) { return d._id !== user._id })
+        filteredList = _.filter(list, function(username) { return username !== user.username })
 
-    return Meteor.users.find({ _id: { $in: filteredList } })
+    return Meteor.users.find({ username: { $in: filteredList } })
   }
 });

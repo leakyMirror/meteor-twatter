@@ -2,7 +2,8 @@ template(name='profileNumbers')
   //- Takes user as a context
   ul.list-inline.text-center
     li
-      h3 #{ twattsCount }
+      a(href="{{ pathFor 'profile' username=username }}")
+        h3 #{ twattsCount }
       span Twatts
     li
       a(href="{{ pathFor 'followlist' username=username type='following' }}")

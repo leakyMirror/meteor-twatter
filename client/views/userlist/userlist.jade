@@ -8,7 +8,8 @@ template(name="userlist")
       each users
         .media.col-md-6.col-lg-4
           .media-left.media-top
-            +gravatar context=this size=128
+            a(href="{{ pathFor 'profile' }}")
+              +gravatar context=this size=128
             .follow-btn-container
               +followButton this
 

@@ -4,6 +4,6 @@ template(name='followButton')
     div
   else
     if isFollowed
-      button(id='#{_id}').btn.btn-sm.btn-success.follow-btn Followed
+      button(id='#{username}').btn.btn-sm.btn-success.follow-btn Followed
     else
-      button(id='#{_id}').btn.btn-sm.btn-default.follow-btn Follow
+      button(id='#{username}').btn.btn-sm.btn-default.follow-btn Follow
