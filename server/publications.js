@@ -1,4 +1,5 @@
 Meteor.publish('userStream', function(params) {
+  if(!params) return []
   console.log(params)
   check(params, { _id: String, following: Array })
 
