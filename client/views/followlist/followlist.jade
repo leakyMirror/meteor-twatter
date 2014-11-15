@@ -1,6 +1,11 @@
 template(name='followlist')
+  h2 #{ this.type }: (#{ this.usersCount })
   each users
-    unless equal ../profileOwner this.username
-      +gravatar context=this size=64
-      h3 #{ username }
-        +followButton this
+    .col-xs-12
+      .media
+        a(href="{{ pathFor 'profile' }}").media-left
+          +gravatar context=this size=100
+        .media-body
+          a(href="{{ pathFor 'profile' }}")
+            h4.media-heading #{ username }
+          +followButton this
